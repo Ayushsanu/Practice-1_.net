@@ -1,0 +1,107 @@
+﻿@*
+@model Practice_1.Models.Movie
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.budget)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.budget)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+*@
+
+@model IEnumerable<Practice_1.Models.Movie>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px; /* Adjust the padding to your preference */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>List of Movies</h1>
+    <a asp-controller="Movie" asp-action="Create" class="btn btn-success" style="float: right; margin-bottom: 10px;">Create Movie</a>
+
+    <table>
+        <tr>
+            <th style="width: 10%;">Id</th>
+            <th style="width: 20%;">Title</th>
+            <th style="width: 15%;">Budget</th>
+            <th style="width: 30%;">Description</th>
+            <th style="width: 25%;">Director</th>
+            <th style="width: 10%;">Actions</th>
+        </tr>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Id</td>
+                <td>@movie.Title</td>
+                <td>@movie.budget</td>
+                <td>@movie.Description</td>
+                <td>@movie.Director</td>
+                <td>
+                    <a asp-controller="Movie"  asp-action="Edit" asp-route-Id="@movie.Id" class="btn btn-primary mx-2">Edit</a>
+                    <a asp-controller="Movie"  asp-action="Delete" class="btn btn-delete mx-2">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
+
+
+

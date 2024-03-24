@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Practice_1.Models.Movie>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+</head>
+<body>
+    <h1>List of Movies</h1>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Budget</th>
+            <th>Description</th>
+            <th>Director</th>
+        </tr>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Id</td>
+                <td>@movie.Title</td>
+                <td>@movie.budget</td>
+                <td>@movie.Description</td>
+                <td>@movie.Director</td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
